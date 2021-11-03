@@ -37,5 +37,11 @@ out/
 .vscode/
 
 ### env ###
-config.yml
-dbconfig.*
+.env
+.env*
+
+### jar files ###
+*.jar
+
+### Dev ###
+docker-compose.yml
