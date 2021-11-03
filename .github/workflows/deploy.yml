@@ -11,8 +11,8 @@ jobs:
 
       - name: create env file
         run: |
-          touch /src/main/resources/dbconfig.prod.yml
-          echo "${{ secrets.DB_CONFIG }}" >> dbconfig.prod.yml
+          touch .env
+          echo "${{ secrets.ENV_VARS }}" >> .env
 
       - name: create remote directory
         uses: appleboy/ssh-action@master
