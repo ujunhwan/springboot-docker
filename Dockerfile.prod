@@ -1,0 +1,24 @@
+# BUILDER IMAGE
+FROM openjdk:11 as Builder
+COPY gradlew .
+COPY build.gradle .
+COPY settings.gradle .
+COPY .env .
+
+COPY gradle gradle
+COPY src src
+
+RUN chmod +x ./gradlew
+
+RUN ./gradlew build
+
+RUN ls build/libs
+
+# BASE IMAGE
+FROM openjdk:11
+COPY --from=Builder build/libs/*.jar app.jar
+
+EXPOSE 8080
+RUN chmod +x app.jar
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "app.jar"]
+#CMD ["java", "-jar", "app.jar"]
