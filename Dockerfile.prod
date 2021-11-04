@@ -12,7 +12,7 @@ RUN chmod +x ./gradlew
 
 RUN ./gradlew clean
 RUN ./gradlew --stop
-RUN ./gradlew build
+RUN ./gradlew build -x test
 
 # BASE IMAGE
 FROM openjdk:11-jre-slim
