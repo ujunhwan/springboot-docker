@@ -6,19 +6,18 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.prod
-#    command: gunicorn django-rest-framework-14th.wsgi:application --bind 0.0.0.0:8000
-    environment:
-      DJANGO_SETTINGS_MODULE: django-rest-framework-14th.settings.prod
     env_file:
       - .env
     volumes:
       - static:/home/app/web/static
       - media:/home/app/web/media
+      - app:/app
     expose:
       - 8080
-    entrypoint:
-      - sh
-      - config/docker/entrypoint.prod.sh
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
 
 #  nginx:
 #    container_name: nginx
@@ -34,3 +33,4 @@ services:
 volumes:
   static:
   media:
+  app:
