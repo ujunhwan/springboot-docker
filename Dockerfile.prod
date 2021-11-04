@@ -20,5 +20,3 @@ COPY --from=Builder build/libs/*.jar app.jar
 
 EXPOSE 8080
 RUN chmod +x app.jar
-ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "app.jar"]
-#CMD ["java", "-jar", "app.jar"]
