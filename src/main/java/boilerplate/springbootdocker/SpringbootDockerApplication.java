@@ -13,14 +13,8 @@ public class SpringbootDockerApplication {
     private final TestRepository testRepository;
 
 	@GetMapping("/")
-	public String index() {
+	public String hello() {
 		return "Hello World!";
-	}
-
-	@GetMapping("/test")
-	public String DBTest() {
-        TestRepository.TestEntity testEntity = testRepository.find(1L);
-        return testEntity.getContent();
 	}
 
 	public static void main(String[] args) {
