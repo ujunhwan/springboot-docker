@@ -1,14 +1,10 @@
 package boilerplate.springbootdocker;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @SpringBootApplication
 @RestController
@@ -18,8 +14,13 @@ public class SpringbootDockerApplication {
 
 	@GetMapping("/")
 	public String index() {
-		TestRepository.TestEntity testEntity = testRepository.find(1L);
-		return "Hello World! " + testEntity.getContent();
+		return "Hello World!";
+	}
+
+	@GetMapping("/test")
+	public String DBTest() {
+        TestRepository.TestEntity testEntity = testRepository.find(1L);
+        return testEntity.getContent();
 	}
 
 	public static void main(String[] args) {
