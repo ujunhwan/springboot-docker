@@ -39,6 +39,11 @@ test {
 	useJUnitPlatform()
 }
 
+/* remove plane.jar */
+jar {
+	enabled = false
+}
+
 /* querydsl config START */
 
 def querydslDir = "$buildDir/generated/querydsl"
