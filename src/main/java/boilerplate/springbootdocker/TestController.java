@@ -11,6 +11,11 @@ public class TestController {
 
     private final TestService testService;
 
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
+
     @GetMapping("/test/{id}")
     public TestEntity getTest(@PathVariable("id") Long id) {
         return testService.findTestById(id);
