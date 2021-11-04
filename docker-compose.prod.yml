@@ -12,24 +12,11 @@ services:
     volumes:
       - static:/home/app/web/static
       - media:/home/app/web/media
-      - app:/app
     expose:
       - 8080
     ports:
       - 8080:8080
 
-#  nginx:
-#    container_name: nginx
-#    build: ./config/nginx
-#    volumes:
-#      - static:/home/app/web/static
-#      - media:/home/app/web/media
-#    ports:
-#      - "80:80"
-#    depends_on:
-#      - web
-
 volumes:
   static:
   media:
-  app:
