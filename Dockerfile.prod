@@ -8,15 +8,19 @@ COPY .env .
 COPY gradle gradle
 COPY src src
 
+RUN echo "SOURCE COPY COMPLETE"
+
 RUN chmod +x ./gradlew
 
 RUN ./gradlew build
 
-RUN ls build/libs
+RUN echo "BUILD COMPLETE"
 
 # BASE IMAGE
 FROM openjdk:11
 COPY --from=Builder build/libs/*.jar app.jar
+
+RUN echo "BUILDER COPY COMPLETE"
 
 EXPOSE 8080
 RUN chmod +x app.jar
