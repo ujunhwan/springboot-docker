@@ -19,7 +19,8 @@ then
   sudo chmod +x /usr/local/bin/docker-compose
 fi
 
-echo "start docker-compose up: ubuntu"
-sudo docker-compose -f /home/ubuntu/srv/ubuntu/docker-compose.prod.yml down
-sudo ./gradlew build
-sudo docker-compose -f /home/ubuntu/srv/ubuntu/docker-compose.prod.yml up --build -d
+#echo "start docker-compose up: ubuntu"
+#sudo docker-compose -f /home/ubuntu/srv/ubuntu/docker-compose.prod.yml down
+sudo ls -al
+sudo pwd
+#sudo docker-compose -f /home/ubuntu/srv/ubuntu/docker-compose.prod.yml up --build -d
