@@ -1,28 +1,8 @@
-# BUILDER IMAGE
-FROM openjdk:11 as Builder
-COPY gradlew .
-COPY build.gradle .
-COPY settings.gradle .
-COPY .env .
-
-COPY gradle gradle
-COPY src src
-
-RUN echo "SOURCE COPY COMPLETE"
-
-
-RUN chmod +x ./gradlew
-
-RUN ./gradlew clean
-RUN ./gradlew build
-
-RUN echo "BUILD COMPLETE"
-
 # BASE IMAGE
 FROM openjdk:11
-COPY --from=Builder build/libs/*.jar app.jar
 
-RUN echo "BUILDER COPY COMPLETE"
+# RUNNER에서 빌드
+COPY build/libs/*.jar app.jar
 
 EXPOSE 8080
 RUN chmod +x app.jar
